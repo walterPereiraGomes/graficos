@@ -15,6 +15,9 @@ function ClusteredColumnChart(props) {
   const [nome1, setNome1] = useState("Dado 1")
   const [nome2, setNome2] = useState("Dado 2")
 
+  const [cor1, setCor1] = useState("#67b7dc")
+  const [cor2, setCor2] = useState("#6794dc")
+
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
 
@@ -55,6 +58,8 @@ function ClusteredColumnChart(props) {
         yAxis: yAxis,
         valueYField: "value1",
         categoryXField: "category",
+        fill: cor1,
+        stroke: cor1
       })
     );
     series1.data.setAll(data);
@@ -66,6 +71,8 @@ function ClusteredColumnChart(props) {
         yAxis: yAxis,
         valueYField: "value2",
         categoryXField: "category",
+        fill: cor2,
+        stroke: cor2
       })
     );
     series2.data.setAll(data);
@@ -191,15 +198,29 @@ function ClusteredColumnChart(props) {
           </div>
         </div>
       )}
-
-      <div>
-        <h3>Editar nomes</h3>
-        <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
-          <div style={{display: 'flex', gap: 10}}>
-            <TextField value={nome1} onChange={(e) => setNome1(e.target.value)}/>
-            <TextField value={nome2} onChange={(e) => setNome2(e.target.value)}/>
+      <div style={{display: 'flex', gap: 20, marginTop: 20}}>
+        <div style={{borderRadius: 5,
+            border: "solid 1px #67b7dc", padding: 20}}>
+          <h3>Editar nomes</h3>
+          <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
+            <div style={{display: 'flex', gap: 10}}>
+              <TextField value={nome1} onChange={(e) => setNome1(e.target.value)}/>
+              <TextField value={nome2} onChange={(e) => setNome2(e.target.value)}/>
+            </div>
+            <Button variant="outlined" onClick={() => setDados([...dados])}>Salvar</Button>
           </div>
-          <Button variant="outlined" onClick={() => setDados([...dados])}>Salvar</Button>
+        </div>
+
+        <div style={{ borderRadius: 5,
+            border: "solid 1px #67b7dc", padding: 20}}>
+          <h3>Editar Cores</h3>
+          <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
+            <div style={{display: 'flex', gap: 10}}>
+              <TextField value={cor1} onChange={(e) => setCor1(e.target.value)}/>
+              <TextField value={cor2} onChange={(e) => setCor2(e.target.value)}/>
+            </div>
+            <Button variant="outlined" onClick={() => setDados([...dados])}>Salvar</Button>
+          </div>
         </div>
       </div>
     </div>
