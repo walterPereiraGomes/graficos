@@ -48,7 +48,7 @@ function ClusteredColumnChart(props) {
     // Create series
     let series1 = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Laryssa",
+        name: "Dado 1",
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: "value1",
@@ -59,7 +59,7 @@ function ClusteredColumnChart(props) {
 
     let series2 = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Walter",
+        name: "Dado 2",
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: "value2",
