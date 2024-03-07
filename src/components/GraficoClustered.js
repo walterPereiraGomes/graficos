@@ -12,6 +12,8 @@ function ClusteredColumnChart(props) {
   const [valor1, setValor1] = useState(0);
   const [valor2, setValor2] = useState(0);
   const [isAdd, setIsAdd] = useState(false);
+  const [nome1, setNome1] = useState("Dado 1")
+  const [nome2, setNome2] = useState("Dado 2")
 
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
@@ -48,7 +50,7 @@ function ClusteredColumnChart(props) {
     // Create series
     let series1 = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Dado 1",
+        name: nome1,
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: "value1",
@@ -59,7 +61,7 @@ function ClusteredColumnChart(props) {
 
     let series2 = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Dado 2",
+        name: nome2,
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: "value2",
@@ -189,6 +191,17 @@ function ClusteredColumnChart(props) {
           </div>
         </div>
       )}
+
+      <div>
+        <h3>Editar nomes</h3>
+        <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
+          <div style={{display: 'flex', gap: 10}}>
+            <TextField value={nome1} onChange={(e) => setNome1(e.target.value)}/>
+            <TextField value={nome2} onChange={(e) => setNome2(e.target.value)}/>
+          </div>
+          <Button variant="outlined" onClick={() => setDados([...dados])}>Salvar</Button>
+        </div>
+      </div>
     </div>
   );
 }
